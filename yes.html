@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html ng-app="EappraiseApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Eappraise</title>
+
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+      <!-- script tags -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+      <script src="js/app.js"></script>
+      <script src="js/reportController.js" charset="utf-8"></script>
+
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+      <!-- Bootstrap Core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Custom CSS -->
+      <link href="css/heroic-features.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="icon" type="image/ico" href="favicon.ico" sizes="32x32"/>
+
+</head>
+
+<body>
+   <div ng-controller="ReportController as reportCtrl">
+
+      <!-- Navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index.html">Eappraise</a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                      <li>
+                          <a href="about.html">About</a>
+                      </li>
+                      <li>
+                          <a href="contact.html">Contact</a>
+                      </li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+      </nav>
+      <!-- end navigation -->
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Jumbotron Header -->
+        <header class="jumbotron hero-spacer">
+          <div id="top"><h7> Eappraise </h7></div><br>
+          <div ng-repeat="report in reportCtrl.all track by $index" id="listing">
+          <span ng-show="$last">  <mark>  So, your building should be listed between {{(report.rent * 12 * .65 / .04)*.9| currency }}
+              and {{(report.rent * 12 * .65 / .04)*1.1| currency }}</mark></span>  </div>
+
+              <form class="add-report" ng-submit='reportCtrl.addReport()'>
+                  <!-- <div>
+                    <label for="address">Please enter your address for a more specific appraisal: </label>
+                    <input id="search" type="text" type="text" id="street-address" placeholder="742 Evergreen Terrace, Springfield, KY, 55419" ng-model='reportCtrl.newReport.address' required><img src="input.png" alt="input" height="100" width="100">
+                  </div> -->
+
+                  <div id="locationField">
+                    <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" ng-model='reportCtrl.addReport.address'></input>
+                  </div>
+
+                  <table id="address">
+                        <tr>
+
+                          <td class="slimField"><input class="field" id="street_number"
+                                disabled="true" ng-model='reportCtrl.newReport.address' ></input></td>
+                              </tr>
+                              <tr>
+                          <td class="wideField" colspan="2"><input class="field" id="route"
+                                disabled="true" ng-model='reportCtrl.newReport.address'></input></td>
+                              </tr>
+                              <tr>
+                          <td class="wideField" colspan="3"><input class="field" id="locality"
+                                disabled="true" ng-model='reportCtrl.newReport.address'></input></td>
+                              </tr>
+                              <tr>
+                          <td class="slimField"><input class="field"
+                                id="administrative_area_level_1" disabled="true" ng-model='reportCtrl.newReport.address'></input></td>
+                              </tr>
+                              <tr>
+                          <td class="wideField"><input class="field" id="postal_code"
+                                disabled="true" ng-model='reportCtrl.newReport.address'></input></td>
+                              </tr>
+
+                          <td class="wideField" colspan="3"><input class="field"
+                                id="country" disabled="true" ng-model='reportCtrl.newReport.address'></input></td>
+                        </tr>
+                      </table>
+
+
+                  <div>
+                    <input id="butt" type="submit" value="Get Appraised" onclick="location.href='yespartial.html'">
+                  </div>
+                </form>
+                 <hr>
+                 <div id="disc"> Disclaimer: This appraisal is not legally binding and is only for apartment / multifamily buildings in Silver Lake and Echo Park (90026) </div>
+                 <hr>
+      </div>
+    </div>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; BRE Investment 2016</p>
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+        <script>
+          // This example displays an address form, using the autocomplete feature
+          // of the Google Places API to help users fill in the information.
+
+          // This example requires the Places library. Include the libraries=places
+          // parameter when you first load the API. For example:
+          // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+          var placeSearch, autocomplete;
+          var componentForm = {
+            street_number: 'short_name',
+            route: 'long_name',
+            locality: 'long_name',
+            administrative_area_level_1: 'short_name',
+            country: 'long_name',
+            postal_code: 'short_name'
+          };
+
+          function initAutocomplete() {
+            // Create the autocomplete object, restricting the search to geographical
+            // location types.
+            autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                {types: ['geocode']});
+
+            // When the user selects an address from the dropdown, populate the address
+            // fields in the form.
+            autocomplete.addListener('place_changed', fillInAddress);
+          }
+
+          function fillInAddress() {
+            // Get the place details from the autocomplete object.
+            var place = autocomplete.getPlace();
+
+            for (var component in componentForm) {
+              document.getElementById(component).value = "";
+              document.getElementById(component).disabled = false;
+            }
+
+            // Get each component of the address from the place details
+            // and fill the corresponding field on the form.
+            for (var i = 0; i < place.address_components.length; i++) {
+              var addressType = place.address_components[i].types[0];
+              if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+              }
+            }
+          }
+
+          // Bias the autocomplete object to the user's geographical location,
+          // as supplied by the browser's 'navigator.geolocation' object.
+          function geolocate() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                  center: geolocation,
+                  radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+              });
+            }
+          }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe3A-szqW5NsTJidEQITMnSsrHmLz3oB4&libraries=places&callback=initAutocomplete"
+            async defer></script>
+
+
+</body>
+
+</html>
