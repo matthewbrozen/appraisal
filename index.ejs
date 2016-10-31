@@ -16,6 +16,7 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
 
+    <!--env variables and basic form control-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script type="text/javascript">
          var backendUrl = "<%= backendUrl %>";
@@ -33,12 +34,13 @@
       <script src="js/reportController.js" charset="utf-8"></script>
 
       <!--autocomplete -->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDotNyA6kS1C9cZZb5XETEfRnJ_tnu3YHI&libraries=places"></script>
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=googleKey&libraries=places"></script>
       <script type="text/javascript" src="bower_components/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js"></script>
       <script type="text/javascript" src="bower_components/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
 
       <!-- Bootstrap Core CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
+
       <!-- Custom CSS -->
       <link href="css/heroic-features.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -113,10 +115,14 @@
                <h2 class="text-center estimateLabel" ng-model="vm.newProperty.estimation">
                  {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.9 | currency : symbol : fractionSize}} - {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.1 | currency : symbol : fractionSize}}
                </h2> -->
+
+               <!-- list price -->
                <h3 class="text-center estimateLabel">Listing Estimate:</h3>
                <h2 class="text-center estimateLabel">
                  {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
                </h2>
+
+               <!-- cash price -->
                <h3 class="text-center estimateLabel">Offer in Cash:</h3>
                <h2 class="text-center estimateLabel">
                  {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
