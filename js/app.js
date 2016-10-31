@@ -1,1 +1,1 @@
-angular.module('EappraiseApp', []);
+angular.module('EappraiseApp', ['vsGoogleAutocomplete']);
