@@ -27,9 +27,9 @@
       <script src="js/reportController.js" charset="utf-8"></script>
 
       <!--autocomplete -->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-      <script type="text/javascript" src="bower_compents/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js"></script>
-      <script type="text/javascript" src="bower_compents/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDotNyA6kS1C9cZZb5XETEfRnJ_tnu3YHI&libraries=places"></script>
+      <script type="text/javascript" src="bower_components/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js"></script>
+      <script type="text/javascript" src="bower_components/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
 
       <!-- Bootstrap Core CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -94,7 +94,7 @@
 
               <div>
                 <label for="address">Input your property address:</label>
-                <input vs-google-autocomplete ng-model="address" name="address" type="text" id="address" placeholder="123 fake st." ng-model='reportCtrl.newReport.address'  required="required">
+                <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="123 fake st." ng-model='reportCtrl.newReport.address'  required="required">
               </div>
 
 

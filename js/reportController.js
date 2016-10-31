@@ -51,7 +51,7 @@ function addReport(){
  $http
    .post('https://frozen-gorge-77961.herokuapp.com/reports', self.newReport)
    .success(function(response){
-     console.log(self.all[self.all.length-1]);
+    //  console.log(self.all[self.all.length-1]);
  });
 }
 
