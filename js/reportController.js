@@ -24,28 +24,6 @@ function getReport(){
 //calling the method at runtime to have data
 getReport();
 
-function checkReport() {
-    var addressInputs = {
-      "AddressLine1" : vm.newProperty.address1,
-      "AddressLine2" : vm.newProperty.address2
-    }
-    function encodeAddressURI(str){
-      return encodeURI(str).replace(/%20/g, "+");
-    }
-
-    $http
-      .get('https://www.yaddress.net/api/address/?AddressLine1='+encodeAddressURI(addressInputs.AddressLine1)+'&AddressLine2='+encodeAddressURI(addressInputs.AddressLine2))
-      .then(function(res){
-        console.log(res);
-        console.log(addressInputs);
-      }, function(err){
-        console.log(vm.newProperty.address1)
-        console.log(err);
-      });
-  }
-
-
-
 //post report method need to store _id from response
 function addReport(){
  $http
