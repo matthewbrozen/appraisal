@@ -76,9 +76,9 @@
 
         </div>
         <!-- submit to http post to api -->
-        <hr>  
+        <hr>
         <div class="container" ng-hide="showMe=showMe">
-          <form class="add-report" ng-submit='reportCtrl.addReport()'>
+          <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport()'>
 
               <div>
                 <label for="gross_rent">Input your monthly rent:</label>
@@ -99,12 +99,11 @@
 
               <div>
                 <!-- onclick to next page -->
-                <input id="butt" type="submit" value="Get Appraised" ng-click="showMe=1;">
+                <input id="butt" type="submit" value="Get Appraised" ng-click="showMe=1;" ng-disabled="myForm.$invalid">
               </div>
             </form>
 
        </div>
-     </div>
 
        <div class="row" ng-show="showMe==1">
            <div class="row">
