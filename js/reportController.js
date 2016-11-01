@@ -17,7 +17,6 @@ function getReport(){
    .get('https://frozen-gorge-77961.herokuapp.com/reports/')
    .then(function(response){
      self.all = response.data.allReports;
-    //  console.log(self.all);
  });
 }
 
@@ -29,7 +28,6 @@ function addReport(){
  $http
    .post('https://frozen-gorge-77961.herokuapp.com/reports', self.newReport)
    .success(function(response){
-    //  console.log(self.all[self.all.length-1]);
  });
 }
 
