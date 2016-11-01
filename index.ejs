@@ -132,13 +132,13 @@
 
 
              <!-- list price -->
-             <h3 class="text-center estimateLabel">Listing Price:</h3>
+             <h1 class="text-center estimateLabel">Listing Price:</h3>
              <h2 class="text-center estimateLabel">
                {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
              </h2>
 
              <!-- cash price -->
-             <h3 class="text-center estimateLabel">Offer in Cash:</h3>
+             <h1 class="text-center estimateLabel">Offer in Cash:</h3>
              <h2 class="text-center estimateLabel">
                {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
              </h2>
