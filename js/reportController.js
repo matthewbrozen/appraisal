@@ -14,7 +14,7 @@ function ReportController($http) {
 //get all method needs to be turned into get last post or current user or session post
 function getReport(){
  $http
-   .get('https://frozen-gorge-77961.herokuapp.com/reports/')
+   .get('https://frozen-gorge-77961.herokuapp.com/reports')
    .then(function(response){
      self.all = response.data.allReports;
  });
@@ -36,7 +36,7 @@ function addReport(){
 function updateReport(){
   getReport();
  $http
-   .patch('https://frozen-gorge-77961.herokuapp.com/reports/')
+   .patch('https://frozen-gorge-77961.herokuapp.com/reports')
    .then(function(response){
  });
 }
