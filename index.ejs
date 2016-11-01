@@ -34,7 +34,7 @@
       <script src="js/reportController.js" charset="utf-8"></script>
 
       <!--autocomplete -->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=googleKey&libraries=places"></script>
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7V0v5x7FCdxtz5mwXtRw66pdzPNzRfmI&libraries=places"></script>
       <script type="text/javascript" src="bower_components/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js"></script>
       <script type="text/javascript" src="bower_components/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
 
@@ -93,15 +93,9 @@
                 <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="123 fake st." ng-model='reportCtrl.newReport.address'  required="required">
               </div>
 
-
-              <div>
-                <label for="email">Input your email:</label>
-                <input type="text" id="email" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
-              </div>
-
               <div>
                 <!-- onclick to next page -->
-                <input id="butt" type="submit" value="Get Appraised" ng-click="showMe=1;" ng-disabled="myForm.$invalid">
+                <input id="butt" type="submit" value="Get Appraised" ng-click="showMe=1;">
               </div>
             </form>
 
@@ -110,30 +104,53 @@
        <div class="row" ng-show="showMe==1">
            <div class="row">
              <div class="col-xs-12 col-md-12">
-               <h3 class="text-center estimateLabel">Thank you. An agent will contact you within 48 hours to discuss THISSSSS</h3>
-     <!--           <h3 class="text-center">Here is your estimated value</h3>
+               <h3 class="text-center">Here is your estimated value</h3>
                <h2 class="text-center estimateLabel" ng-model="vm.newProperty.estimation">
                  {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.9 | currency : symbol : fractionSize}} - {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.1 | currency : symbol : fractionSize}}
-               </h2> -->
-
-               <!-- list price -->
-               <h3 class="text-center estimateLabel">Listing Estimate:</h3>
-               <h2 class="text-center estimateLabel">
-                 {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
                </h2>
 
-               <!-- cash price -->
-               <h3 class="text-center estimateLabel">Offer in Cash:</h3>
-               <h2 class="text-center estimateLabel">
-                 {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
-               </h2>
+               <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport()'>
+
+                   <div>
+                     <label for="email">Input your email for a list price and a cash offer:</label>
+                     <input type="text" id="email" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
+                   </div>
+
+                   <div>
+                     <!-- onclick to next page -->
+                     <input id="butt" type="submit" value="Get Appraised" ng-click="showMe=2;" ng-disabled="myForm.$invalid">
+                   </div>
+                 </form>
+
              </div>
            </div>
          </div>
 
 
 
-        </header>
+         <div class="container" ng-show="showMe==2">
+
+
+             <!-- list price -->
+             <h3 class="text-center estimateLabel">Listing Price:</h3>
+             <h2 class="text-center estimateLabel">
+               {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
+             </h2>
+
+             <!-- cash price -->
+             <h3 class="text-center estimateLabel">Offer in Cash:</h3>
+             <h2 class="text-center estimateLabel">
+               {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+             </h2>
+
+            <p> A agent will contact you within 48 hours, feel free to contact us </p>
+
+
+                <a href="mailto:Hello@BREinvestment.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
+        </div>
+
+
+
 
 
 
