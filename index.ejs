@@ -87,9 +87,10 @@
         </div>
         <!-- submit to http post to api -->
         <hr>
+
+        <div class="row">
         <div class="container" ng-hide="showMe=showMe">
           <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport()'>
-
               <div>
                 <label for="gross_rent">Input your monthly rent:</label>
                 <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent'  required="required">
@@ -97,7 +98,7 @@
               </div>
 
               <div>
-                <label for="address">Input your property address:</label>
+                <label for="address">&nbsp &nbsp &nbsp &nbsp &nbsp Input your address:</label>
                 <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
               </div>
 
@@ -108,6 +109,7 @@
             </form>
 
        </div>
+     </div>
 
        <div class="row" ng-show="showMe==1">
            <div class="row">
