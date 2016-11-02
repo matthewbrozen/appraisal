@@ -63,6 +63,16 @@ body{
   left:0;
 }
 
-.appraisal-button {
+/*.appraisal-button {
   margin: 1em;
+}*/
+
+.appraisal-button {
+  margin: 1em 0 1em 0;
 }
+
+.text-space {
+  margin: 2em !important;
+}
+
+
