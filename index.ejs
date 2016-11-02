@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Eappraise</title>
+    <title> ValueEgg </title>
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,7 +65,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="https://arcane-stream-97612.herokuapp.com/">Eappraise</a>
+                <a class="navbar-brand" href="https://arcane-stream-97612.herokuapp.com/">ValueEgg</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -81,8 +81,8 @@
 
         <!-- Jumbotron Header -->
         <div class="container jumbotron text-center">
-          <h1> Welcome to Eappraise </h1><br>
-          <h4> Eappraise ensures you are getting the most for your property</h4>
+          <h1> Welcome to ValueEgg </h1><br>
+          <h4> ValueEgg ensures you are getting the most value for you nest egg. We cut out the middleman and bring you a quick easy appraisal at your fingertips. </h4>
 
         </div>
         <!-- submit to http post to api -->
@@ -115,9 +115,9 @@
            <div class="row">
              <div class="col-xs-12 col-md-12">
                <h3 class="text-center">Here is your estimated value</h3>
-               <h2 class="text-center estimateLabel" ng-model="vm.newProperty.estimation">
-                 {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.9 | currency : symbol : fractionSize}} - {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.1 | currency : symbol : fractionSize}}
-               </h2>
+               <h1 class="text-center estimateLabel" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:100px">
+                  {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | currency : symbol : fractionSize}} - {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| currency : symbol : fractionSize}}</div>
+               </h1>
 
                <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport()'>
 
@@ -134,7 +134,7 @@
 
              </div>
            </div>
-         </div>
+
 
 
 
@@ -142,21 +142,25 @@
 
 
              <!-- list price -->
-             <h1 class="text-center estimateLabel">Listing Price:</h3>
-             <h2 class="text-center estimateLabel">
+             <h2 class="text-center estimateLabel">Listing Price:</h3>
+             <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
                {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
              </h2>
+             <br>
+             <br>
+             <br>
 
              <!-- cash price -->
-             <h1 class="text-center estimateLabel">Offer in Cash:</h3>
-             <h2 class="text-center estimateLabel">
+             <h2 class="text-center estimateLabel">Offer in Cash:</h3>
+             <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
                {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
              </h2>
+             <br>
 
             <p> A agent will contact you within 48 hours, feel free to contact us </p>
 
 
-                <a href="mailto:Hello@BREinvestment.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
+                <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
         </div>
 
 
@@ -168,7 +172,7 @@
         <footer id=".footer">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; 2016</p>
+                    <p>Copyright &copy; ValueEgg 2016</p>
                        <div id="disc"> Disclaimer: This appraisal is not legally binding and is only for apartment / multifamily buildings in Silver Lake and Echo Park (90026) </div>
                 </div>
             </div>

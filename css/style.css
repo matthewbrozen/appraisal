@@ -71,3 +71,8 @@ body{
 .text-space{
   margin:2em !important;
 }
+
+.bold{
+  font-weight:bold;
+  font-size:200px;
+}
