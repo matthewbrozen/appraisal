@@ -149,26 +149,29 @@
              <br>
              <br>
 
-             <!-- cash price -->
-             <h2 class="text-center estimateLabel">Offer in Cash:</h3>
-             <h1 class="text-centeb
-             r estimateLabel" style="font-weight:bold; font-size:75px;">
-               {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
-             </h2>
-             <br>
-
-             <form name="thridForm" class="add-report" ng-submit='reportCtrl.addReport()'>
-
-                 <div>
-                   <label for="phone">Interested? We will text you right away!:</label>
-                   <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
-                 </div>
-
-                 <div>
-                   <!-- onclick to next page -->
-                   <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=3;"> Get Text </button>
-                 </div>
-               </form>
+                        <form ng-submit="reportCtrl.addReport()">
+               <div class="col-xs-12">
+                 <div class="col-xs-12 col-md-4">
+                   <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
+                   <h5 class="agent-name">David</h5>
+                  <input type="radio" ng-model='reportCtrl.newReport.agent' name="agents" value="david" ng-model='reportCtrl.newReport.agent'>
+                </div>
+  <div class="col-xs-12 col-md-4">
+                  <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
+                <h5 class="agent-name">Agent 1</h5>
+                  <input type="radio" ng-model='reportCtrl.newReport.agent' name="agents" value="agent1">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                  <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
+                  <h5 class="agent-name">Agent 2</h5>
+                  <input type="radio" ng-model='reportCtrl.newReport.agent' name="agents" value="agent2">
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised" ng-click="showMe=3;">Continue</button>
+               </div>
+            </form>
+             <br><br>
 
         </div>
 
@@ -180,15 +183,6 @@
         <div class="container" ng-show="showMe==3">
 
 
-            <!-- list price -->
-            <h2 class="text-center estimateLabel">Listing Price:</h3>
-            <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
-              {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
-            </h2>
-            <br>
-            <br>
-            <br>
-
             <!-- cash price -->
             <h2 class="text-center estimateLabel">Offer in Cash:</h3>
             <h1 class="text-centeb
@@ -197,11 +191,53 @@
             </h2>
             <br>
 
-            <p> A agent will contact you within 48 hours, feel free to contact us </p>
-                <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
+            <form name="thridForm" class="add-report" ng-submit='reportCtrl.addReport()'>
+
+                <div>
+                  <label for="phone">Interested? We will text you right away!:</label>
+                  <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
+                </div>
+
+                <div>
+                  <!-- onclick to next page -->
+                  <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4;"> Get Text </button>
+                </div>
+              </form>
+
+
 
 
        </div>
+
+
+
+
+       <div class="container" ng-show="showMe==4">
+
+
+           <!-- list price -->
+           <h2 class="text-center estimateLabel">Listing Price:</h3>
+           <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
+             {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
+           </h2>
+           <br>
+           <br>
+           <br>
+
+           <!-- cash price -->
+           <h2 class="text-center estimateLabel">Offer in Cash:</h3>
+           <h1 class="text-centeb
+           r estimateLabel" style="font-weight:bold; font-size:75px;">
+             {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+           </h2>
+           <br>
+
+
+           <p> A agent will contact you within 48 hours, feel free to contact us </p>
+               <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
+
+
+      </div>
 
 
         <!-- Footer -->
