@@ -79,4 +79,10 @@ body{
 
 .listing-agent-photo {
   border-radius: 50%;
+  height: 250px;
+  width: 250px;
+}
+
+.bio {
+  font-size: 15px;
 }
