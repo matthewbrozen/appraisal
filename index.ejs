@@ -32,8 +32,8 @@
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-81289313-3', 'auto');
             ga('send', 'pageview');
-
       </script>
+
 
       <!-- script tags -->
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -146,35 +146,31 @@
                {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
              </h2>
 
-            <br>
+            <br><br>
              <!-- LISTING AGENTS -->
-             <form name="thirdForm" ng-submit="reportCtrl.addReport()">
-               <div class="row">
-                <div class="col-xs-12 radio">
-                  <div class="col-xs-12 col-md-4" style="margin-top: 0px !important">
-                    <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
-                    <h5 class="agent-name">David</h5>
-                    <label><input type="radio" name="agent-option" ng-disabled="reportCtrl.newReport.agent" ng-model='reportCtrl.newReport.agent'></label>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                    <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
-                    <h5 class="agent-name">Agent 2</h5>
-                    <label><input type="radio" name="agent-option" ng-disabled="reportCtrl.newReport.agent" ng-model='reportCtrl.newReport.agent'></label>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                    <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
-                    <h5 class="agent-name">Agent 3</h5>
-                    <label><input type="radio" name="agent-option" ng-disabled="reportCtrl.newReport.agent" ng-model='reportCtrl.newReport.agent'></label>
-                    <label><input ng-hide="!hidebutton" type="radio" name="agent-option" ng-disabled="reportCtrl.newReport.agent" ng-model='reportCtrl.newReport.agent' checked=></label>
-                  </div>
+            <form ng-submit="reportCtrl.addReport()">
+              <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4">
+                  <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
+                  <h5 class="agent-name">David</h5>
+                  <input type="radio" ng-model='reportCtrl.newReport.agent' name="agents" value="david" ng-model='reportCtrl.newReport.agent'>
                 </div>
-                <div class="col-xs-12">
-                  <button id="butt" type="submit" value="Get Appraised">Continue</button>
+                <div class="col-xs-12 col-md-4">
+                  <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
+                  <h5 class="agent-name">Agent 1</h5>
+                  <input type="radio" ng-model='reportCtrl.newReport.agent' name="agents" value="agent1">
                 </div>
-               </div>
-             </form>
-
-             <br>
+                <div class="col-xs-12 col-md-4">
+                  <img src="http://placehold.it/250x250" alt="agent picture" class="listing-agent-photo">
+                  <h5 class="agent-name">Agent 2</h5>
+                  <input type="radio" ng-model='reportCtrl.newReport.agent' name="agents" value="agent2">
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised">Continue</button>
+              </div>
+            </form>
+             <br><br>
 
              <!-- cash price -->
              <h2 class="text-center estimateLabel">Offer in Cash:</h3>
@@ -184,7 +180,6 @@
              <br>
 
             <p> A agent will contact you within 48 hours, feel free to contact us </p>
-
 
                 <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
         </div>
