@@ -76,3 +76,7 @@ body{
   font-weight:bold;
   font-size:200px;
 }
+
+.listing-agent-photo {
+  border-radius: 50%;
+}
