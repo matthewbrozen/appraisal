@@ -15,7 +15,6 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-
     <!--env variables and basic form control-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script type="text/javascript">
@@ -123,7 +122,7 @@
 
                    <div>
                      <label for="email">Input your email for a list price and a cash offer:</label>
-                     <input type="email" id="email" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
+                     <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
                    </div>
 
                    <div>
@@ -152,20 +151,57 @@
 
              <!-- cash price -->
              <h2 class="text-center estimateLabel">Offer in Cash:</h3>
-             <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
+             <h1 class="text-centeb
+             r estimateLabel" style="font-weight:bold; font-size:75px;">
                {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
              </h2>
              <br>
 
-            <p> A agent will contact you within 48 hours, feel free to contact us </p>
+             <form name="thridForm" class="add-report" ng-submit='reportCtrl.addReport()'>
 
+                 <div>
+                   <label for="phone">Interested? We will text you right away!:</label>
+                   <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
+                 </div>
 
-                <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
+                 <div>
+                   <!-- onclick to next page -->
+                   <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=3;"> Get Text </button>
+                 </div>
+               </form>
+
         </div>
 
 
 
 
+
+
+        <div class="container" ng-show="showMe==3">
+
+
+            <!-- list price -->
+            <h2 class="text-center estimateLabel">Listing Price:</h3>
+            <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
+              {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
+            </h2>
+            <br>
+            <br>
+            <br>
+
+            <!-- cash price -->
+            <h2 class="text-center estimateLabel">Offer in Cash:</h3>
+            <h1 class="text-centeb
+            r estimateLabel" style="font-weight:bold; font-size:75px;">
+              {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+            </h2>
+            <br>
+
+            <p> A agent will contact you within 48 hours, feel free to contact us </p>
+                <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
+
+
+       </div>
 
 
         <!-- Footer -->
@@ -179,7 +215,6 @@
         </footer>
       <!-- end footer -->
 
-    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -187,6 +222,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+        </div>
 
 </body>
 
