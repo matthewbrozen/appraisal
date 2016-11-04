@@ -57,7 +57,7 @@
 
 </head>
 
-<body>
+<body ng-cloak>
   <!-- controller tag -->
  <div ng-controller="ReportController as reportCtrl">
     <!-- Navigation -->
@@ -185,17 +185,11 @@
 
         </div>
 
-
-
-
-
-
         <div class="container" ng-show="showMe==3">
-
 
             <!-- cash price -->
             <h2 class="text-center estimateLabel text-color">Offer in Cash:</h3>
-            <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
+            <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px; color: white;">
               {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
             </h2>
             <br>
@@ -213,20 +207,13 @@
                 </div>
               </form>
 
-
-
-
        </div>
 
-
-
-
-       <div class="container text-color" ng-show="showMe==4">
-
+       <div class="container" ng-show="showMe==4">
 
            <!-- list price -->
-           <h2 class="text-center estimateLabel">Listing Price:</h3>
-           <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
+           <h2 class="text-center estimateLabel text-color">Listing Price:</h3>
+           <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
              {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
            </h2>
            <br>
@@ -240,10 +227,8 @@
            </h2>
            <br>
 
-
-           <p> A agent will contact you within 48 hours, feel free to contact us </p>
-               <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" target="_top">Contact us</a>
-
+           <p class="text-color"> A agent will contact you within 48 hours, feel free to contact us </p>
+               <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" class="text-color" target="_top">Contact us</a>
 
       </div>
 
