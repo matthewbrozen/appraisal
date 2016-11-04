@@ -17,10 +17,11 @@ input:invalid {
   border:1px solid red;
 }
 
-body{
-  font-family: 'Open Sans', sans-serif;
+body {
+  font-family: 'Average Sans', sans-serif;
   font-size:200%;
-  background-color:#88B04B;
+  background-image: url(blur.jpeg);
+  background-size: cover;
 }
 
 #disc{
@@ -28,7 +29,7 @@ body{
 }
 
 #butt {
-    background-color: 	#006400;
+    background-color: black;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -37,6 +38,7 @@ body{
     display: inline-block;
     font-size: 16px;
     margin-top:20px;
+    border-radius: 25px;
 }
 
 #bbutt {
@@ -54,16 +56,6 @@ body{
   font-size:10px;
 }
 
-.footer {
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
-  position:absolute;
-  right:0;
-  bottom:0;
-  left:0;
-}
-
 .appraisal-button {
   margin: 1em 1em 0;
 }
@@ -77,6 +69,75 @@ body{
   font-size:200px;
 }
 
-.listing-agent-photo {
-  border-radius: 50%;
+.bio {
+  font-size: 15px;
 }
+
+.value-egg-header {
+  background-color:rgba(0,0,0,0.5);
+  color: white !important;
+}
+
+.text-color {
+  color: white;
+}
+
+.jumbotron {
+  margin-top: 30px;
+}
+
+.jumbotron > h1 {
+  font-family: 'Pacifico', cursive;
+}
+
+/* AGENT HOVER AND SELECTION*/
+
+.agent-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.david{
+  background-image:url(david.jpg);
+}
+.agent2{
+  background-image:url(agent2.jpg);
+}
+.agent3{
+  background-image:url(agent3.jpg);
+}
+
+.agent-selector input:active +.r-agent{opacity: .9;}
+.agent-selector input:checked +.r-agent{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.r-agent{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.r-agent:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Extras */
+a:visited{color:#888}
+a{color:#444;text-decoration:none;}
+p{margin-bottom:.3em;}
+
