@@ -10,6 +10,7 @@ function ReportController($http) {
   self.data=[];
   self.newReport={};
   self.addReport= addReport;
+  self.currentDate = new Date();
 
 //get all method needs to be turned into get last post or current user or session post
 function getReport(){

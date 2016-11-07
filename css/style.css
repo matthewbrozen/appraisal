@@ -94,6 +94,42 @@ body {
   display: none !important;
 }
 
+/*PSEUDO PDF*/
+
+.pseudo-pdf {
+  background-color: white;
+  height: 900px;
+  width: 700px;
+  padding-top: 50px;
+  color: black;
+  box-shadow: 10px 10px 5px grey;
+}
+
+.VE-header{
+  font-family: 'Pacifico', cursive;
+  color: green;
+  background-color: black;
+}
+
+.VE-header-small{
+  color: white;
+  font-size: 15px;
+  font-family: 'Average Sans', san-serif;
+}
+
+.header-hr {
+  height: 4px;
+  color: yellow;
+}
+
+.content {
+  padding: 25px;
+}
+
+
+
+
+
 /* AGENT HOVER AND SELECTION*/
 
 .agent-selector input{
