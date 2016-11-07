@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+var dotenv= require("dotenv")
 require("dotenv").load();
 
 // set the port of our application
