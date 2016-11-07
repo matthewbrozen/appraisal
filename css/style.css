@@ -90,6 +90,10 @@ body {
   font-family: 'Pacifico', cursive;
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 /* AGENT HOVER AND SELECTION*/
 
 .agent-selector input{
