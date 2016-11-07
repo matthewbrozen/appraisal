@@ -229,12 +229,14 @@
                 <h1 class="VE-header text-left">&nbsp; ValueEgg <small class=" VE-header-small text-color"> | Real Estate Valuation & Consulting</small></h1>
               </div>
             </header>
-            <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+            <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
 
             <div class="text-left content">
+              <p class="text-left">{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</p>
+              <br>
               <p class="text-left">To whom it may concern,</p>
               <br>
-              <p class="text-left">&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
+              <p class="text-left">&nbsp;&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
               which brings in {{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}} a month.
               Our agent, {{reportCtrl.newReport.agent}}, can list your property for
                 <span ng-if="reportCtrl.newReport.agent === 'david'">
@@ -261,10 +263,12 @@
             </div>
             <br>
             <p>Cash offer of  {{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</p>
-            <p></p>
-              <br>
+
+            <br>
             <p><small>Legal Disclaimer</small></p>
            </div>
+
+           <br><br>
 
            <p class="text-color"> A agent will contact you within 48 hours, feel free to contact us </p>
                <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" class="text-color" target="_top">Contact us</a>
