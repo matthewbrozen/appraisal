@@ -173,11 +173,12 @@
                   <label class="r-agent agent3"for="agent3"></label>
                   <p class="agent-name">Tati</p>
                   <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quaerat tempore eaque quo eligendi velit commodi impedit pariatur quibusdam accusantium distinctio numquam dignissimos nesciunt nostrum magni, eum quidem iste qui.</p>
-                  <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</p>
+                  <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.63)/0.04 | currency : symbol : fractionSize}}</p>
                 </div>
                </div>
               <div class="col-xs-12">
-                <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised" ng-click="showMe=3;">Get Cash Offer</button>
+                <!-- <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised" ng-click="showMe=3;">Get Cash Offer</button> -->
+                <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised" ng-click="showMe=4;">Get Cash Offer</button>
                </div>
             </form>
 
@@ -187,26 +188,23 @@
 
         <div class="container" ng-show="showMe==3">
 
-            <!-- cash price -->
-            <h2 class="text-center estimateLabel text-color">Offer in Cash:</h3>
-            <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px; color: white;">
-              {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
-            </h2>
-            <br>
+          <!-- cash price -->
+          <h2 class="text-center estimateLabel text-color">Offer in Cash:</h3>
+          <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px; color: white;">
+            {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+          </h2>
+          <br>
 
-            <form name="thirdForm" class="add-report" ng-submit='reportCtrl.addReport()'>
-
-                <div>
-                  <label class="text-color" for="phone">Interested? We will text you right away!:</label>
-                  <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
-                </div>
-
-                <div>
-                  <!-- onclick to next page -->
-                  <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4;"> Get Text </button>
-                </div>
-              </form>
-
+          <form name="thirdForm" class="add-report" ng-submit='reportCtrl.addReport()'>
+            <div>
+              <label class="text-color" for="phone">Interested? We will text you right away!:</label>
+              <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
+            </div>
+            <div>
+              <!-- onclick to next page -->
+              <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4;"> Get Text </button>
+            </div>
+          </form>
        </div>
 
        <div class="container" ng-show="showMe==4">
@@ -217,8 +215,6 @@
              {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
            </h2>
            <br>
-           <br>
-           <br>
 
            <!-- cash price -->
            <h2 class="text-center estimateLabel text-color">Offer in Cash:</h3>
@@ -226,6 +222,49 @@
              {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
            </h2>
            <br>
+
+           <div class="pseudo-pdf box-shadow container">
+            <header>
+              <div class="col-xs-12">
+                <h1 class="VE-header text-left">&nbsp; ValueEgg <small class=" VE-header-small text-color"> | Real Estate Valuation & Consulting</small></h1>
+              </div>
+            </header>
+            <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+
+            <div class="text-left content">
+              <p class="text-left">To whom it may concern,</p>
+              <br>
+              <p class="text-left">&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
+              which brings in {{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}} a month.
+              Our agent, {{reportCtrl.newReport.agent}}, can list your property for
+                <span ng-if="reportCtrl.newReport.agent === 'david'">
+                 {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
+                </span>
+                <span ng-if="reportCtrl.newReport.agent === 'agent2'">
+                 {{ ((reportCtrl.newReport.gross_rent*12)*0.53)/0.04 | currency : symbol : fractionSize}}
+                </span>
+                <span ng-if="reportCtrl.newReport.agent === 'agent3'">
+                 {{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}
+                </span>
+              or {{reportCtrl.newReport.agent}} can offer you {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+              within 48 hours.
+              Please print out this page for your records and
+                <span ng-if="reportCtrl.newReport.agent === 'david'">
+                {{reportCtrl.newReport.agent}}              </span>
+                <span ng-if="reportCtrl.newReport.agent === 'agent2'">
+                 {{reportCtrl.newReport.agent}}              </span>
+                <span ng-if="reportCtrl.newReport.agent === 'agent3'">
+                  {{reportCtrl.newReport.agent}}
+                </span>
+              will be in touch shortly.
+              </p>
+            </div>
+            <br>
+            <p>Cash offer of  {{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</p>
+            <p></p>
+              <br>
+            <p><small>Legal Disclaimer</small></p>
+           </div>
 
            <p class="text-color"> A agent will contact you within 48 hours, feel free to contact us </p>
                <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" class="text-color" target="_top">Contact us</a>
