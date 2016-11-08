@@ -29,16 +29,16 @@ body {
 }
 
 #butt {
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top:20px;
-    border-radius: 25px;
+  background-color: black;
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin-top:20px;
+   border-radius: 25px;
 }
 
 #bbutt {
@@ -94,6 +94,37 @@ body {
   display: none !important;
 }
 
+/*PSEUDO PDF*/
+
+ .pseudo-pdf {
+   background-color: white;
+   height: 900px;
+   width: 700px;
+   padding-top: 50px;
+   color: black;
+ }
+
+ .VE-header{
+   font-family: 'Pacifico', cursive;
+   color: green;
+   background-color: black;
+ }
+
+ .VE-header-small{
+   color: white;
+   font-size: 15px;
+   font-family: 'Average Sans', san-serif;
+ }
+
+ .header-hr {
+   height: 4px;
+   color: yellow;
+ }
+ 
+ .content {
+   padding: 25px;
+ }
+
 /* AGENT HOVER AND SELECTION*/
 
 .agent-selector input{
@@ -144,4 +175,3 @@ body {
 a:visited{color:#888}
 a{color:#444;text-decoration:none;}
 p{margin-bottom:.3em;}
-

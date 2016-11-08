@@ -46,213 +46,217 @@
 
       <!-- Custom CSS -->
       <link href="css/heroic-features.css" rel="stylesheet">
-      <!-- <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> -->
       <link href="https://fonts.googleapis.com/css?family=Average+Sans|Hind+Siliguri|Karma|Pacifico|Puritan" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <link rel="icon" type="image/ico" href="favicon.ico" sizes="32x32"/>
 
 </head>
 
+<!--hide {{}} on load -->
 <body ng-cloak>
   <!-- controller tag -->
  <div ng-controller="ReportController as reportCtrl">
-    <!-- Navigation -->
+
+
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="https://valueegg.herokuapp.com/" style="color: white;">ValueEgg</a>
+            <div class="container">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="https://valueegg.herokuapp.com/" style="color: white;">ValueEgg</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+               </ul>
+           </div>
+         </div>
     </nav>
 
-    <!-- Page Content -->
 
-    <!-- Jumbotron Header -->
-          <div class="city-background container-fluid">
-            <div class="container jumbotron text-center value-egg-header">
-              <h1> Welcome to ValueEgg </h1><br>
-              <h4> ValueEgg ensures you are getting the most value for you nest egg.</h4>
-              <h4> We cut out the middleman and bring you a quick easy appraisal at your fingertips. </h4>
-            </div>
-          </div>
+     <div class="city-background container-fluid" ng-hide="header">
+        <div class="container jumbotron text-center value-egg-header">
+             <h1> Welcome to ValueEgg </h1><br>
+             <h4> ValueEgg ensures you are getting the most value for you nest egg.</h4>
+             <h4> We cut out the middleman and bring you a quick easy appraisal at your fingertips. </h4>
+           </div>
+        </div>
 
-            <!-- submit to API http post request to api of rent and address -->
-            <hr>
-            <div class="text-space"></div>
+        <hr>
+     <div class="text-space"></div>
 
-            <div class="row">
-            <div class="container" ng-hide="showMe=showMe">
-              <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport()'>
+     <!-- ADDRESS AND RENT INPUT PAGE -->
+     <div class="row">
+       <div class="container" ng-hide="showMe=showMe">
+               <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport()'>
                   <div>
                     <label class="text-color" for="gross_rent">Input your monthly rent:</label>
                     <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent'  required="required">
-                    <p id="please" class="text-color"> Please use simple numeric format, ex. 7000, form won't accept formating like $7,000 </p>
+                       <p id="please" class="text-color"> Please use simple numeric format, ex. 7000, form won't accept formating like $7,000 </p>
                   </div>
 
                   <div>
-                    <label class="text-color" for="address">&nbsp &nbsp &nbsp &nbsp &nbsp Input your address:</label>
-                    <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
-                  </div>
+                     <label class="text-color" for="address">&nbsp &nbsp &nbsp &nbsp &nbsp Input your address:</label>
+                     <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
+                   </div>
 
-                  <div>
-                    <!-- onclick to next page -->
-                    <button id="butt" type="submit" value="Get Appraised" ng-disabled="myForm.$invalid" ng-click="showMe=1;"> Get Appraised </button>
-                  </div>
-                </form>
+                   <div>
+                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="myForm.$invalid" ng-click="showMe=1;"> Get Appraised </button>
+                   </div>
 
-           </div>
-         </div>
+                 </form>
+          </div>
+      </div>
 
-  <!-- Show user range and submit to API http post request to api of rent, address, and email -->
-           <div class="row" ng-show="showMe==1">
-               <div class="row">
+       <!-- EMAIL INPUT PAGE -->
+        <div class="row" ng-show="showMe==1">
+          <div class="row">
                  <div class="col-xs-12 col-md-12">
-                   <h3 class="text-center text-color">Here is your estimated value</h3>
-                   <h1 class="text-center estimateLabel text-color" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:100px">
-                      {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | currency : symbol : fractionSize}} - {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| currency : symbol : fractionSize}}</div>
-                   </h1>
+                   <h2 class="text-center text-color">Here is your estimated value</h2>
+                     <h1 class="text-center estimateLabel text-color" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:100px">
+                      {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | currency : symbol : fractionSize}} - {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| currency : symbol : fractionSize}}
+                     </h1>
+                  </div>
 
-                   <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport()'>
-
-                       <div>
-                         <label class="text-color" for="email">Input your email for a list price and a cash offer:</label>
-                         <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
-                       </div>
-
-                       <div>
-                         <!-- onclick to next page -->
-                         <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;"> Get Appraised </button>
-                       </div>
-                     </form>
-
-                 </div>
-               </div>
-
-
-
-  <!-- Show user list price and submit to API http post request to api of rent, address, email, and selectd agent -->
-         <div class="container" ng-show="showMe==2">
-
-             <!-- list price -->
-             <h2 class="text-center estimateLabel text-color">Listing Price:</h3>
-             <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
-               {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
-             </h2>
-             <br>
-             <br>
-             <br>
-             <form ng-submit="reportCtrl.addReport()">
-               <div class="col-xs-12 text-color agent-selector">
-                <div class="col-xs-12 col-md-4">
-                  <input id="david" type="radio" name="credit-card" value="david" ng-model='reportCtrl.newReport.agent'>
-                  <label class="r-agent david" for="david"></label>
-                  <p class="agent-name">David</p>
-                  <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, dolorem debitis sit facilis temporibus quibusdam ullam animi quae quo veniam eum ab necessitatibus tenetur libero amet. Eum sequi provident minima!</p>
-                  <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</p>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                  <input ng-model='reportCtrl.newReport.agent' id="agent2" type="radio" name="credit-card" value="agent2">
-                  <label class="r-agent agent2"for="agent2"></label>
-                  <p class="agent-name">Christof</p>
-                  <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quaerat tempore eaque quo eligendi velit commodi impedit pariatur quibusdam accusantium distinctio numquam dignissimos nesciunt nostrum magni, eum quidem iste qui.</p>
-                  <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</p>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                  <input ng-model='reportCtrl.newReport.agent' id="agent3" type="radio" name="credit-card" value="agent3">
-                  <label class="r-agent agent3"for="agent3"></label>
-                  <p class="agent-name">Tati</p>
-                  <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quaerat tempore eaque quo eligendi velit commodi impedit pariatur quibusdam accusantium distinctio numquam dignissimos nesciunt nostrum magni, eum quidem iste qui.</p>
-                  <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</p>
-                </div>
-               </div>
-              <div class="col-xs-12">
-                <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised" ng-click="showMe=3;">Get Cash Offer</button>
-               </div>
-            </form>
-
-            <br><br>
-
+                  <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport()'>
+                    <div>
+                      <label class="text-color" for="email">Input your email for a list price and a cash offer:</label>
+                      <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
+                    </div>
+                  <div>
+                    <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;"> Get Appraised </button>
+                  </div>
+                  </form>
+          </div>
         </div>
 
-  <!-- Show user cash price and submit to API http post request to api of rent, address, email, selectd agent and phone number -->
+        <!-- AGENT SELECTION PAGE -->
+        <div class="container" ng-show="showMe==2">
+            <h2 class="text-center estimateLabel text-color">Listing Price:</h2>
+              <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
+                {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
+               </h1>
+              <br><br><br>
 
-        <div class="container" ng-show="showMe==3">
+                    <form ng-submit="reportCtrl.addReport()">
+                      <div class="col-xs-12 text-color agent-selector">
+                        <div class="col-xs-12 col-md-4">
+                          <input id="david" type="radio" name="credit-card" value="david" ng-model='reportCtrl.newReport.agent'>
+                          <label class="r-agent david" for="david"></label>
+                              <p class="agent-name">David</p>
+                              <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, dolorem debitis sit facilis temporibus quibusdam ullam animi quae quo veniam eum ab necessitatibus tenetur libero amet. Eum sequi provident minima!</p>
+                              <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</p>
+                        </div>
 
-            <!-- cash price -->
-            <h2 class="text-center estimateLabel text-color">Offer in Cash:</h3>
-            <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px; color: white;">
-              {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
-            </h2>
+                        <div class="col-xs-12 col-md-4">
+                          <input ng-model='reportCtrl.newReport.agent' id="agent2" type="radio" name="credit-card" value="agent2">
+                          <label class="r-agent agent2"for="agent2"></label>
+                              <p class="agent-name">Christof</p>
+                              <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quaerat tempore eaque quo eligendi velit commodi impedit pariatur quibusdam accusantium distinctio numquam dignissimos nesciunt nostrum magni, eum quidem iste qui.</p>
+                              <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</p>
+                        </div>
+
+                         <div class="col-xs-12 col-md-4">
+                            <input ng-model='reportCtrl.newReport.agent' id="agent3" type="radio" name="credit-card" value="agent3">
+                            <label class="r-agent agent3"for="agent3"></label>
+                            <p class="agent-name">Tati</p>
+                            <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quaerat tempore eaque quo eligendi velit commodi impedit pariatur quibusdam accusantium distinctio numquam dignissimos nesciunt nostrum magni, eum quidem iste qui.</p>
+                            <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.63)/0.04 | currency : symbol : fractionSize}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                          <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised" ng-click="showMe=3;">Get Cash Offer</button>
+                        </div>
+
+                    </form>
+
+                <br><br>
+            </div>
+
+        <!-- PHONE NUMBER INPUT & TEXT PAGE -->
+          <div class="container" ng-show="showMe==3">
+            <h2 class="text-center estimateLabel text-color">Offer in Cash:</h2>
+              <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px; color: white;">
+                {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+             </h1>
             <br>
 
             <form name="thirdForm" class="add-report" ng-submit='reportCtrl.addReport()'>
 
-                <div>
-                  <label class="text-color" for="phone">Interested? We will text you right away!:</label>
-                  <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
+              <div>
+                <label class="text-color" for="phone">Interested? We will text you right away!:</label>
+                <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
+              </div>
+
+              <div>
+                <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4; header=true"> Get Text </button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- PDF PAGE -->
+            <div class="container" ng-show="showMe==4">
+              <div class="pseudo-pdf box-shadow container">
+                <header>
+                  <div class="col-xs-12">
+                    <h1 class="VE-header text-left">&nbsp; ValueEgg <small class=" VE-header-small text-color"> | Real Estate Valuation & Consulting</small></h1>
+                  </div>
+                </header>
+
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
+
+                <div class="text-left content">
+                    <h3 class="text-left">{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</h3>
+                    <br>
+                    <h3 class="text-left">To whom it may concern,</h3>
+                    <br>
+                    <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
+                    <p class="text-left">&nbsp;&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
+                      which brings in {{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}} a month.
+                      Our agent, {{reportCtrl.newReport.agent}}, can list your property for
+                      <span ng-if="reportCtrl.newReport.agent === 'david'">{{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent2'">{{ ((reportCtrl.newReport.gross_rent*12)*0.53)/0.04 | currency : symbol : fractionSize}}</span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent3'">{{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</span>
+                      or {{reportCtrl.newReport.agent}} can offer you {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+                      within 48 hours.
+                      Please print out this page for your records and
+                      <span ng-if="reportCtrl.newReport.agent === 'david'">{{reportCtrl.newReport.agent}}</span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent2'">{{reportCtrl.newReport.agent}}</span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent3'">{{reportCtrl.newReport.agent}}<span>
+                      will be in touch shortly.
+                    </p>
                 </div>
 
-                <div>
-                  <!-- onclick to next page -->
-                  <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4;"> Get Text </button>
-                </div>
-              </form>
+                <br>
 
-       </div>
+                  <h2>Cash offer of  {{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</h2>
+                <br>
 
-  <!-- Show user final offer-->
-       <div class="container" ng-show="showMe==4">
-
-           <!-- list price -->
-           <h2 class="text-center estimateLabel text-color">Listing Price:</h3>
-           <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
-             {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
-           </h2>
-           <br>
-           <br>
-           <br>
-
-           <!-- cash price -->
-           <h2 class="text-center estimateLabel text-color">Offer in Cash:</h3>
-           <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
-             {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
-           </h2>
-           <br>
-
-           <p class="text-color"> A agent will contact you within 48 hours, feel free to contact us </p>
-               <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" class="text-color" target="_top">Contact us</a>
-
-      </div>
-
-
-        <!-- Footer -->
-        <footer id="footer" class="text-color">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; ValueEgg 2016</p>
-                       <div id="disc"> Disclaimer: This appraisal is not legally binding and is only for apartment / multifamily buildings in Silver Lake and Echo Park (90026) </div>
-                </div>
+                  <h5 class="text-center"><small>Legal Disclaimer</small></h5>
+                    <h5><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dicta doloribus fugiat repudiandae neque? Sed earum ullam eius accusantium aliquam quo nostrum fugit incidunt, saepe aliquid modi optio, aut reprehenderit.</small></h5>
+              </div>
+              <br><br>
+              <a href="mailto:david@valueegg.com?Subject=Interested%20in%20cash%20offer" class="text-color" target="_top">Contact us</a>
             </div>
-        </footer>
-      <!-- end footer -->
 
-    <!-- /.container -->
+          <!-- FOOTER -->
+          <footer id="footer" class="text-color">
+            <div class="row">
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+                <div class="col-lg-12">
+                  <p>Copyright &copy; ValueEgg 2016</p>
+                  <div id="disc"> Disclaimer: This appraisal is not legally binding and is only for apartment / multifamily buildings in Silver Lake and Echo Park (90026) </div>
+                </div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+            </div>
+
+          </footer>
+
         </div>
 
-</body>
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+      </body>
 
 </html>
