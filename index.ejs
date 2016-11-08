@@ -214,15 +214,15 @@
                     <p class="text-left">&nbsp;&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
                       which brings in <b>{{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}}</b> a month.
                       Our agent, <b>{{reportCtrl.newReport.agent}}</b>, can list your property for
-                      <span ng-if="reportCtrl.newReport.agent === 'david'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</b></span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent2'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.53)/0.04 | currency : symbol : fractionSize}}</b></span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent3'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'David'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'Agent2'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.53)/0.04 | currency : symbol : fractionSize}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'Agent3'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</b></span>
                       or <b>{{reportCtrl.newReport.agent}}</b> can offer you <b>{{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</b>
                       within 48 hours.
                       Please print out this page for your records and
-                      <span ng-if="reportCtrl.newReport.agent === 'david'"><b>{{reportCtrl.newReport.agent}}</b></span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent2'"><b>{{reportCtrl.newReport.agent}}</b></span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent3'"><b>{{reportCtrl.newReport.agent}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'David'"><b>{{reportCtrl.newReport.agent}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'Agent2'"><b>{{reportCtrl.newReport.agent}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'Agent3'"><b>{{reportCtrl.newReport.agent}}</b></span>
                       will be in touch shortly.
                     </p>
                 </div>
