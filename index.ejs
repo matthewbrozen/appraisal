@@ -93,12 +93,12 @@
                   </div>
 
                   <div>
-                     <label class="text-color" for="address">&nbsp &nbsp &nbsp &nbsp &nbsp Input your address:</label>
+                     <label class="text-color" for="address">&nbsp &nbsp &nbsp &nbsp Input your address:</label>
                      <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
                    </div>
 
                    <div>
-                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="myForm.$invalid" ng-click="showMe=1;"> Get Appraised </button>
+                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="myForm.$invalid" ng-click="showMe=1;"> Get Estimate Range </button>
                    </div>
 
                  </form>
@@ -110,8 +110,8 @@
           <div class="row">
                  <div class="col-xs-12 col-md-12">
                    <h2 class="text-center text-color">Here is your estimated value</h2>
-                     <h1 class="text-center estimateLabel text-color" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:100px">
-                      {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | currency : symbol : fractionSize}} - {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| currency : symbol : fractionSize}}
+                     <h1 class="text-center estimateLabel text-color" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:75px">
+                      {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | currency : symbol : fractionSize}} - <br>{{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| currency : symbol : fractionSize}}
                      </h1>
                   </div>
 
@@ -121,7 +121,7 @@
                       <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
                     </div>
                   <div>
-                    <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;"> Get Appraised </button>
+                    <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;"> Get listing Estimate </button>
                   </div>
                   </form>
           </div>
@@ -129,11 +129,12 @@
 
         <!-- AGENT SELECTION PAGE -->
         <div class="container" ng-show="showMe==2">
-            <h2 class="text-center estimateLabel text-color">Listing Price:</h2>
+            <h2 class="text-center estimateLabel text-color">Average Listing Price:</h2>
               <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
-                {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
+                {{ ((reportCtrl.newReport.gross_rent*12)*0.60)/0.04 | currency : symbol : fractionSize}}
                </h1>
               <br><br><br>
+              <h3 class="text-center estimateLabel text-color"> Select Agent from below and press get cash offer to see a cash offer from that agent</h3>
 
                     <form ng-submit="reportCtrl.addReport()">
                       <div class="col-xs-12 text-color agent-selector">
@@ -150,7 +151,7 @@
                           <label class="r-agent agent2"for="agent2"></label>
                               <p class="agent-name">Christof</p>
                               <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quaerat tempore eaque quo eligendi velit commodi impedit pariatur quibusdam accusantium distinctio numquam dignissimos nesciunt nostrum magni, eum quidem iste qui.</p>
-                              <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</p>
+                              <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.55)/0.04 | currency : symbol : fractionSize}}</p>
                         </div>
 
                          <div class="col-xs-12 col-md-4">
@@ -158,7 +159,7 @@
                             <label class="r-agent agent3"for="agent3"></label>
                             <p class="agent-name">Tati</p>
                             <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quaerat tempore eaque quo eligendi velit commodi impedit pariatur quibusdam accusantium distinctio numquam dignissimos nesciunt nostrum magni, eum quidem iste qui.</p>
-                            <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.63)/0.04 | currency : symbol : fractionSize}}</p>
+                            <p class="bio"><strong>Listing Price</strong>: {{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</p>
                           </div>
                         </div>
 
@@ -187,7 +188,7 @@
               </div>
 
               <div>
-                <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4; header=true"> Get Text </button>
+                <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4; header=true"> Get Text and Appraisal Summary</button>
               </div>
 
             </form>
@@ -205,31 +206,31 @@
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
 
                 <div class="text-left content">
-                    <h3 class="text-left">{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</h3>
+                    <h3 class="text-left"><b>{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</b></h3>
                     <br>
                     <h3 class="text-left">To whom it may concern,</h3>
                     <br>
                     <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
                     <p class="text-left">&nbsp;&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
-                      which brings in {{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}} a month.
-                      Our agent, {{reportCtrl.newReport.agent}}, can list your property for
-                      <span ng-if="reportCtrl.newReport.agent === 'david'">{{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent2'">{{ ((reportCtrl.newReport.gross_rent*12)*0.53)/0.04 | currency : symbol : fractionSize}}</span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent3'">{{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</span>
-                      or {{reportCtrl.newReport.agent}} can offer you {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+                      which brings in <b>{{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}}</b> a month.
+                      Our agent, <b>{{reportCtrl.newReport.agent}}</b>, can list your property for
+                      <span ng-if="reportCtrl.newReport.agent === 'david'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent2'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.53)/0.04 | currency : symbol : fractionSize}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent3'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</b></span>
+                      or <b>{{reportCtrl.newReport.agent}}</b> can offer you <b>{{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</b>
                       within 48 hours.
                       Please print out this page for your records and
-                      <span ng-if="reportCtrl.newReport.agent === 'david'">{{reportCtrl.newReport.agent}}</span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent2'">{{reportCtrl.newReport.agent}}</span>
-                      <span ng-if="reportCtrl.newReport.agent === 'agent3'">{{reportCtrl.newReport.agent}}</span>
+                      <span ng-if="reportCtrl.newReport.agent === 'david'"><b>{{reportCtrl.newReport.agent}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent2'"><b>{{reportCtrl.newReport.agent}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'agent3'"><b>{{reportCtrl.newReport.agent}}</b></span>
                       will be in touch shortly.
                     </p>
                 </div>
 
                 <br>
 
-                  <h2>Cash offer of  {{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</h2>
-                <br>
+                  <h2>Cash offer of  <b>{{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</b></h2>
+                <br><br><br><br><br><br>
 
                   <h5 class="text-center"><small>Legal Disclaimer</small></h5>
                     <h5><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dicta doloribus fugiat repudiandae neque? Sed earum ullam eius accusantium aliquam quo nostrum fugit incidunt, saepe aliquid modi optio, aut reprehenderit.</small></h5>
