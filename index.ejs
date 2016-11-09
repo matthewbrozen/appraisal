@@ -216,11 +216,13 @@
           <!-- PDF PAGE -->
             <div class="container" ng-show="showMe==4">
               <div class="pseudo-pdf box-shadow container">
+                <h1 id="again" class="text-center">Please Print This Appraisal Summary</h1><hr>
                 <button type="button" class="btn btn-primary" id="printer" onclick="myFunction()">Print this page</button>
                     <script>
                     function myFunction() {
                         $('#printer').hide()
                         $('#hider').hide()
+                        $('#again').hide()
                         window.print();
                     }
                     </script>
@@ -235,7 +237,7 @@
                 <div class="text-left content">
                     <h3 class="text-left"><b>{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</b></h3>
                     <br>
-                    <h2 class="text-center">ValueEgg Appraisal Summary</h3><hr>
+                    <h2 class="text-center">ValueEgg Appraisal Summary</h2><hr>
                     <h3 class="text-left">To whom it may concern,</h3>
                     <br>
                     <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
