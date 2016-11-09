@@ -81,7 +81,7 @@
            </div>
         </div>
 
-        <hr>
+
      <div class="text-space"></div>
 
      <span ng-hide="showMe=showMe">
@@ -99,6 +99,8 @@
      <span ng-if="showMe==4" ng-show="showMe==4">
        <img id="hider" src="css/progress5.png" alt="">
      </span>
+
+     <hr>
 
      <!-- ADDRESS AND RENT INPUT PAGE -->
      <div class="row">
@@ -147,7 +149,7 @@
 
         <!-- AGENT SELECTION PAGE -->
         <div class="container" ng-show="showMe==2">
-            <h2 class="text-center estimateLabel text-color">Average Listing Price From Top Agents in 90026</h2><hr>
+            <h2 class="text-center estimateLabel text-color">Average Listing Price From Top Agents in 90026 zipcode</h2><hr>
               <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
                 {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
                </h1>
@@ -253,6 +255,7 @@
 
 
             </div>
+          </div>
 
           <!-- FOOTER -->
           <footer id="footer" class="text-color">
