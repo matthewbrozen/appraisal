@@ -75,7 +75,7 @@
         <div class="container jumbotron text-center value-egg-header">
              <h1> Welcome to ValueEgg </h1><br>
              <h4> ValueEgg ensures you are getting the most value for your nest egg.</h4>
-             <h4> We cut out the middleman and bring you a quick easy appraisal at your fingertips. </h4>
+             <h4> We cut out the middleman and bring you a quick and easy appraisal at your fingertips. </h4>
            </div>
         </div>
 
@@ -89,7 +89,7 @@
                   <div>
                     <label class="text-color" for="gross_rent">Input your monthly rent:</label>
                     <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent'  required="required">
-                       <p id="please" class="text-color"> Please use simple numeric format, ex. 7000, form won't accept formating like $7,000 </p>
+                       <p id="please" class="text-color"> Please use simple numeric format, ex. 7000, form won't accept formatting like $7,000 </p>
                   </div>
 
                   <div>
@@ -215,7 +215,7 @@
                       which brings in <b>{{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}}</b> a month.
                       Our agent, <b>{{reportCtrl.newReport.agent}}</b>, can list your property for
                       <span ng-if="reportCtrl.newReport.agent === 'David'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</b></span>
-                      <span ng-if="reportCtrl.newReport.agent === 'Agent2'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.53)/0.04 | currency : symbol : fractionSize}}</b></span>
+                      <span ng-if="reportCtrl.newReport.agent === 'Agent2'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.55)/0.04 | currency : symbol : fractionSize}}</b></span>
                       <span ng-if="reportCtrl.newReport.agent === 'Agent3'"><b>{{ ((reportCtrl.newReport.gross_rent*12)*0.59)/0.04 | currency : symbol : fractionSize}}</b></span>
                       or <b>{{reportCtrl.newReport.agent}}</b> can offer you <b>{{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</b>
                       within 48 hours.
