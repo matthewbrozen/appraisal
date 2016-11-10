@@ -35,6 +35,7 @@
       <script src="node_modules/angular-resource/angular-resource.js"></script>
       <script src="js/app.js"></script>
       <script src="js/reportController.js" charset="utf-8"></script>
+      <script src="js/numberAbbreviation.js" charset="utf-8"></script>
 
       <!--autocomplete -->
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7V0v5x7FCdxtz5mwXtRw66pdzPNzRfmI&libraries=places"></script>
@@ -107,13 +108,13 @@
        <div class="container" ng-hide="showMe=showMe">
                <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport()'>
                   <div>
-                    <label class="text-color" for="gross_rent">Input your monthly rent:</label>
+                    <label for="gross_rent">Input your monthly rent:</label>
                     <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent'  required="required">
-                       <p id="please" class="text-color"> Please use simple numeric format, ex. 7000, form won't accept formatting like $7,000 </p>
+                       <p id="please"> Please use simple numeric format, ex. 7000, form won't accept formatting like $7,000 </p>
                   </div>
 
                   <div>
-                     <label class="text-color" for="address">&nbsp &nbsp &nbsp &nbsp Input your address:</label>
+                     <label for="address">&nbsp &nbsp &nbsp &nbsp Input your address:</label>
                      <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
                    </div>
 
@@ -129,15 +130,15 @@
         <div class="row" ng-show="showMe==1">
           <div class="row">
                  <div class="col-xs-12 col-md-12">
-                   <h2 class="text-center text-color">Here is your estimated value</h2>
-                     <h1 class="text-center estimateLabel text-color" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:75px">
-                      {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | currency : symbol : fractionSize}} - <br>{{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| currency : symbol : fractionSize}}
+                   <h2 class="text-center">Here is your estimated value</h2>
+                     <h1 class="text-center estimateLabel" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:75px">
+                      ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | shortNumber}} - ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| shortNumber}}
                      </h1>
                   </div>
 
                   <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport()'>
                     <div>
-                      <label class="text-color" for="email">Input your email for a list price and a cash offer:</label>
+                      <label for="email">Input your email for a list price and a cash offer:</label>
                       <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
                     </div>
                   <div>
@@ -151,13 +152,13 @@
         <div class="container" ng-show="showMe==2">
             <h2 class="text-center estimateLabel text-color">Average Listing Price From Top Agents in 90026 zipcode</h2><hr>
               <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
-                {{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}
+                ${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}
                </h1>
               <br>
-              <h3 class="text-center estimateLabel text-color" style="text-size:65px; background-color:crimson;"> Select Top Listing Agent in Your Area From Below to Get the Best Listing Price in Your Area and Then Press Get Cash Offer Button to See a Cash Offer From ValueEgg</h3>
+              <h3 class="text-center estimateLabel" style="text-size:65px; background-color:crimson;"> Select Top Listing Agent in Your Area From Below to Get the Best Listing Price in Your Area and Then Press Get Cash Offer Button to See a Cash Offer From ValueEgg</h3>
 
                     <form ng-submit="reportCtrl.addReport()">
-                      <div class="col-xs-12 text-color agent-selector">
+                      <div class="col-xs-12 agent-selector">
                         <div class="col-xs-12 col-md-4">
                           <input id="david" type="radio" name="credit-card" value="David" ng-model='reportCtrl.newReport.agent'>
                           <label class="r-agent david" for="david"></label>
@@ -193,16 +194,16 @@
 
         <!-- PHONE NUMBER INPUT & TEXT PAGE -->
           <div class="container" ng-show="showMe==3">
-            <h2 class="text-center estimateLabel text-color">Offer in Cash:</h2>
-              <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px; color: white;">
-                {{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}
+            <h2 class="text-center estimateLabel">Offer in Cash:</h2>
+              <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;">
+                ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}
              </h1>
             <br>
 
             <form name="thirdForm" class="add-report" ng-submit='reportCtrl.addReport()'>
 
               <div>
-                <label class="text-color" for="phone">Interested? We will text you right away!:</label>
+                <label for="phone">Interested? We will text you right away!:</label>
                 <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
               </div>
 
@@ -228,7 +229,7 @@
                     </script>
                 <header>
                   <div class="col-xs-12">
-                    <h1 class="VE-header text-left">&nbsp; ValueEgg <small class=" VE-header-small text-color"> | Real Estate Valuation & Consulting</small></h1>
+                    <h1 class="VE-header text-left">&nbsp; ValueEgg <small class=" VE-header-small"> | Real Estate Valuation & Consulting</small></h1>
                   </div>
                 </header>
 
@@ -242,25 +243,25 @@
                     <br>
                     <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
                     <p class="text-left">&nbsp;&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
-                      which brings in <b>{{reportCtrl.newReport.gross_rent | currency : symbol : fractionSize}}</b> a month.
+                      which brings in <b>${{reportCtrl.newReport.gross_rent | shortNumber}}</b> a month.
                       A top agent in 90026, <b>{{reportCtrl.newReport.agent}}</b>, can list your property for
-                      <b>{{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | currency : symbol : fractionSize}}</b></span>
-                      or <b>ValueEgg</b> can offer you <b>{{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</b>
+                      <b>${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}</b></span>
+                      or <b>ValueEgg</b> can offer you <b>${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}</b>
                       within 48 hours.
-                      Please <b style="text-size:20px;">PRINT</b> out this page for your records and call the hot line immediately with the code we SMS texted you. Thanks for using ValueEgg to ensure you are getting the most our of your nest egg.
+                      Please <b style="text-size:20px;">PRINT</b> out this page for your records and call the hot line immediately with the code we SMS texted you. Thanks for using ValueEgg to ensure you are getting the most out of your nest egg.
                     </p>
                 </div>
 
                 <br>
 
-                  <h2>Cash offer of  <b style="text-size:25px;">{{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | currency : symbol : fractionSize}}</b></h2>
+                  <h2>Cash offer of  <b style="text-size:25px;">${{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}</b></h2>
 
 
             </div>
           </div>
 
           <!-- FOOTER -->
-          <footer id="footer" class="text-color">
+          <footer id="footer">
             <div class="row">
 
                 <div class="col-lg-12">
