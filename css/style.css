@@ -20,8 +20,8 @@ input:invalid {
 body {
   font-family: 'Average Sans', sans-serif;
   font-size:200%;
-  background-image: url(blur.jpeg);
-  background-size: cover;
+  background-image: url(squaresoriginal.png);
+  background-size: initial;
 }
 
 #disc{
@@ -78,10 +78,6 @@ body {
   color: white !important;
 }
 
-.text-color {
-  color: white;
-}
-
 .jumbotron {
   margin-top: 30px;
 }
@@ -120,7 +116,7 @@ body {
    height: 4px;
    color: yellow;
  }
- 
+
  .content {
    padding: 25px;
  }
