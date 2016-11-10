@@ -150,12 +150,12 @@
 
         <!-- AGENT SELECTION PAGE -->
         <div class="container" ng-show="showMe==2">
-            <h2 class="text-center estimateLabel text-color">Average Listing Price From Top Agents in 90026 zipcode</h2><hr>
+            <h2 class="text-center estimateLabel text-color">Suggested Listing Price</h2><hr>
               <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
                 ${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}
                </h1>
               <br>
-              <h3 class="text-center estimateLabel" style="text-size:65px; background-color:crimson;"> Select Top Listing Agent in Your Area From Below to Get the Best Listing Price in Your Area and Then Press Get Cash Offer Button to See a Cash Offer From ValueEgg</h3>
+              <h3 class="text-center estimateLabel" style="text-size:65px; background-color:white; text-color:black;"> Select Top Listing Agent in Your Area </h3>
 
                     <form ng-submit="reportCtrl.addReport()">
                       <div class="col-xs-12 agent-selector">
@@ -208,7 +208,7 @@
               </div>
 
               <div>
-                <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4; header=true"> Get Text and Appraisal Summary</button>
+                <button id="butt" type="submit" value="Get Appraised" ng-disabled="thirdForm.$invalid" ng-click="showMe=4; header=true"> Get Text and ValueEgg Offer </button>
               </div>
 
             </form>
@@ -217,7 +217,6 @@
           <!-- PDF PAGE -->
             <div class="container" ng-show="showMe==4">
               <div class="pseudo-pdf box-shadow container">
-                <h1 id="again" class="text-center">Please Print This Appraisal Summary</h1><hr>
                 <button type="button" class="btn btn-primary" id="printer" onclick="myFunction()">Print this page</button>
                     <script>
                     function myFunction() {
@@ -238,7 +237,7 @@
                 <div class="text-left content">
                     <h3 class="text-left"><b>{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</b></h3>
                     <br>
-                    <h2 class="text-center">ValueEgg Appraisal Summary</h2><hr>
+                    <h2 class="text-center">ValueEgg Offer</h2><hr>
                     <h3 class="text-left">To whom it may concern,</h3>
                     <br>
                     <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
