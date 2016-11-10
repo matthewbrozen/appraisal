@@ -86,19 +86,19 @@
      <div class="text-space"></div>
 
      <span ng-hide="showMe=showMe">
-       <img src="css/progress1.png" alt="">
+       <img src="css/newprogress1.png" alt="">
      </span>
      <span ng-if="showMe==1" ng-show="showMe==1">
-       <img src="css/progress2.png" alt="">
+       <img src="css/newprogress2.png" alt="">
      </span>
      <span ng-if="showMe==2" ng-show="showMe==2">
-       <img src="css/progress3.png" alt="">
+       <img src="css/newprogress3.png" alt="">
      </span>
      <span ng-if="showMe==3" ng-show="showMe==3">
-       <img src="css/progress4.png" alt="">
+       <img src="css/newprogress4.png" alt="">
      </span>
      <span ng-if="showMe==4" ng-show="showMe==4">
-       <img id="hider" src="css/progress5.png" alt="">
+       <img id="hider" src="css/newprogress5.png" alt="">
      </span>
 
      <hr>
@@ -217,7 +217,6 @@
           <!-- PDF PAGE -->
             <div class="container" ng-show="showMe==4">
               <div class="pseudo-pdf box-shadow container">
-                <h1 id="again" class="text-center">Please Print This Appraisal Summary</h1><hr>
                 <button type="button" class="btn btn-primary" id="printer" onclick="myFunction()">Print this page</button>
                     <script>
                     function myFunction() {
@@ -238,7 +237,7 @@
                 <div class="text-left content">
                     <h3 class="text-left"><b>{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</b></h3>
                     <br>
-                    <h2 class="text-center">ValueEgg Appraisal Summary</h2><hr>
+                    <h2 class="text-center">ValueEgg Offer</h2><hr>
                     <h3 class="text-left">To whom it may concern,</h3>
                     <br>
                     <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
