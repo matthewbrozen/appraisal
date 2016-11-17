@@ -20,4 +20,3 @@ function ReportController($http, $filter) {
   }
 
 }
-

@@ -94,8 +94,8 @@ body {
 
  .pseudo-pdf {
    background-color: white;
-   height: 900px;
-   width: 700px;
+   height: 1200px;
+   width: 900px;
    padding-top: 50px;
    color: black;
  }
@@ -103,12 +103,12 @@ body {
  .VE-header{
    font-family: 'Pacifico', cursive;
    color: green;
-   background-color: black;
+   font-size:30px;
  }
 
  .VE-header-small{
-   color: white;
-   font-size: 15px;
+   color: black;
+   font-size: 25px;
    font-family: 'Average Sans', san-serif;
  }
 

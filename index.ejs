@@ -205,7 +205,7 @@
 
               <div>
                 <label for="phone">Interested? We will text you right away!:</label>
-                <input type="tel" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
+                <input type="" id="phone" pattern="^\D?(\d{10})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
               </div>
 
               <div>
@@ -224,43 +224,42 @@
                         $('#printer').hide()
                         $('#hider').hide()
                         $('#again').hide()
+                        $('#foots').hide()
                         window.print();
                     }
                     </script>
                 <header>
                   <div class="col-xs-12">
-                    <h1 class="VE-header text-left">&nbsp; ValueEgg <small class=" VE-header-small"> | Real Estate Valuation & Consulting</small></h1>
+                    <div style="font-size:60px;" class="VE-header text-center" >&nbsp; ValueEgg</div>
+                    <small class=" VE-header-small">  Instant Real Estate Evaluation </small>
                   </div>
                 </header>
 
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
 
                 <div class="text-left content">
-                    <h3 class="text-left"><b>{{reportCtrl.currentDate | date : 'MM/dd/yyyy'}}</b></h3>
+                    <p class="text-left" style="font-size:25px;">{{reportCtrl.currentDate | date : 'fullDate'}}</p>
                     <br>
-                    <h2 class="text-center">ValueEgg Offer</h2><hr>
-                    <h3 class="text-left">To whom it may concern,</h3>
+                    <br>
                     <br>
                     <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
-                    <p class="text-left">&nbsp;&nbsp;&nbsp;You have a property at <b>{{reportCtrl.newReport.address}}</b>
-                      which brings in <b>${{reportCtrl.newReport.gross_rent | shortNumber}}</b> a month.
-                      A top agent in 90026, <b>{{reportCtrl.newReport.agent}}</b>, can list your property for
-                      <b>${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}</b></span>
-                      or <b>ValueEgg</b> can offer you <b>${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}</b>
-                      within 48 hours.
-                      Please <b style="text-size:20px;">PRINT</b> out this page for your records and call the hot line immediately with the code we SMS texted you. Thanks for using ValueEgg to ensure you are getting the most out of your nest egg.
+                    <p class="text-left" style="font-size:25px;">Thank you for reaching out to us about your property located at {{reportCtrl.newReport.address}}.<br><br>
+                      Based on the gross monthly rent of {{reportCtrl.newReport.gross_rent | currency:"$":0}} that you provided us, we believe your preferred agent {{reportCtrl.newReport.agent}} should list your property for around ${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}. <br><br>
+                      Want to sell quickly and easily? We'd like to purchase your property for about ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}, and this would be a quick, non-contingent, and all-cash escrow.<br><br>
+                      Of course we'll need to verify the rents and sign a contract, but we can do that in 48 hours. Call us at 213-216-3754 with the code we texted you.<br>
                     </p>
                 </div>
 
                 <br>
 
-                  <h2>Cash offer of  <b style="text-size:25px;">${{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}</b></h2>
+                  <h2><b style="font-size:60px;">Cash offer of ${{(((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}</b></h2>
 
 
             </div>
           </div>
 
           <!-- FOOTER -->
+          <div id="foots">
           <footer id="footer">
             <div class="row">
 
@@ -272,6 +271,7 @@
             </div>
 
           </footer>
+        </div>
 
         </div>
 
