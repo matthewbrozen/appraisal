@@ -112,15 +112,17 @@
                     <label for="gross_rent">Input your monthly rent:</label>
                     <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent'  required="required">
                        <p id="please"> Please use simple numeric format, ex. 7000, form won't accept formatting like $7,000 </p>
+                       <br>
+                       <hr>
                   </div>
 
                   <div>
                      <label for="address">&nbsp &nbsp &nbsp &nbsp Input your address:</label>
-                     <input vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
+                     <input size="50" vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
                    </div>
 
                    <div>
-                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="myForm.$invalid" ng-click="showMe=1;"> Get Estimate Range </button>
+                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="myForm.$invalid" ng-click="showMe=1;"> Get List Price Range </button>
                    </div>
 
                  </form>
@@ -131,19 +133,21 @@
         <div class="row" ng-show="showMe==1">
           <div class="row">
                  <div class="col-xs-12 col-md-12">
-                   <h2 class="text-center">Here is your estimated value</h2>
+                   <h2 class="text-center">Estimate List Price Range</h2>
                      <h1 class="text-center estimateLabel" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:75px">
                       ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | shortNumber}} - ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| shortNumber}}
                      </h1>
+                     <br>
+                     <hr>
                   </div>
 
                   <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport()'>
                     <div>
-                      <label for="email">Input your email for a list price and a cash offer:</label>
+                      <label for="email">Input your email for a list price:</label>
                       <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
                     </div>
                   <div>
-                    <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;"> Get listing Estimate </button>
+                    <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;"> Get List Price Estimate </button>
                   </div>
                   </form>
           </div>
@@ -151,41 +155,16 @@
 
         <!-- AGENT SELECTION PAGE -->
         <div class="container" ng-show="showMe==2">
-            <h2 class="text-center estimateLabel text-color">Suggested Listing Price</h2><hr>
+            <h2 class="text-center estimateLabel text-color">List Price Estimate</h2>
               <h1 class="text-center estimateLabel text-color" style="font-weight:bold; font-size:75px;">
                 ${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}
                </h1>
-              <br>
-              <h3 class="text-center estimateLabel" style="text-size:65px; background-color:white; text-color:black;"> Select Top Listing Agent in Your Area </h3>
-
-                    <form ng-submit="reportCtrl.addReport()">
-                      <div class="col-xs-12 agent-selector">
-                        <div class="col-xs-12 col-md-4">
-                          <input id="david" type="radio" name="credit-card" value="David Bramante" ng-model='reportCtrl.newReport.agent'>
-                          <label class="r-agent david" for="david"></label>
-                              <p class="agent-name"><b class="darkest">David Bramante</b><br><small>Apartment Specialist</small><hr></p>
-                              <p class="bio">Since 2009, I have consistently been one of the top Realtors in sales volume in the 90026 and 90029 zip codes, and my listings sell for top dollar in the fewest days on the market.</p>
-
-                        </div>
-
-                        <div class="col-xs-12 col-md-4">
-                          <input ng-model='reportCtrl.newReport.agent' id="agent2" type="radio" name="credit-card" value="Tracy Do">
-                          <label class="r-agent agent2"for="agent2"></label>
-                              <p class="agent-name"><b class="darkest">Tracy Do</b><br><small>Home Specialist</small><hr></p>
-                              <p class="bio">I’ve established myself as the #1 agent on LA’s Eastside, known for presenting beautiful properties and negotiating the very best terms for my clients. </p>
-                          </div>
-
-                         <div class="col-xs-12 col-md-4">
-                            <input ng-model='reportCtrl.newReport.agent' id="agent3" type="radio" name="credit-card" value="Jo O'key">
-                            <label class="r-agent agent3"for="agent3"></label>
-                            <p class="agent-name"><b class="darkest">Jo O'Key</b><br><small> Home Specialist</small><hr></p>
-                            <p class="bio">I am a full-service, full-time agent with a pulse on the city and the residential housing market. I have years of real estate experience, with the knowledge to make your real estate dream a reality. </p>
-
-                          </div>
-                        </div>
+               <br>
+               <hr>
+               <h2 class="text-center estimateLabel text-color"> Want to save time and have us buy your property?</h2>
 
                         <div class="col-xs-12">
-                          <button id="butt" ng-disabled="!reportCtrl.newReport.agent" type="submit" value="Get Appraised" ng-click="showMe=3;">Get Cash Offer</button>
+                          <button id="butt" type="submit" value="Get Appraised" ng-click="showMe=3;">Get Instant Cash Offer</button>
                         </div>
 
                     </form>
@@ -206,6 +185,7 @@
               <div>
                 <label for="phone">Interested? We will text you right away!:</label>
                 <input type="" id="phone" pattern="^\D?(\d{10})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
+                <p id="please"> Please use simple numeric format, ex. 1112223333, form won't accept formatting like (111)222-333 or 111-222-3333 </p>
               </div>
 
               <div>
@@ -244,7 +224,7 @@
                     <br>
                     <!-- NG-IF STATEMENTS TO MATCH AGENTS WITH THEIR LISTING PRICE -->
                     <p class="text-left" style="font-size:25px;">Thank you for reaching out to us about your property located at {{reportCtrl.newReport.address}}.<br><br>
-                      Based on the gross monthly rent of {{reportCtrl.newReport.gross_rent | currency:"$":0}} that you provided us, we believe your preferred agent {{reportCtrl.newReport.agent}} should list your property for around ${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}. <br><br>
+                      Based on the gross monthly rent of {{reportCtrl.newReport.gross_rent | currency:"$":0}} that you provided us, we believe you should list your property for around ${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}. <br><br>
                       Want to sell quickly and easily? We'd like to purchase your property for about ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}, and this would be a quick, non-contingent, and all-cash escrow.<br><br>
                       Of course we'll need to verify the rents and sign a contract, but we can do that in 48 hours. Call us at 213-216-3754 with the code we texted you.<br>
                     </p>
