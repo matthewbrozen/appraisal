@@ -36,6 +36,7 @@
       <script src="node_modules/angular-resource/angular-resource.js"></script>
       <script src="js/app.js"></script>
       <script src="js/reportController.js" charset="utf-8"></script>
+      <script src="js/emailController.js" charset="utf-8"></script>
       <script src="js/numberAbbreviation.js" charset="utf-8"></script>
 
       <!--autocomplete -->
@@ -104,11 +105,11 @@
      <!-- ADDRESS AND RENT INPUT PAGE -->
      <div class="row">
        <div class="container" ng-hide="showMe=showMe">
-               <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport()'>
+               <form name="myForm" class="add-report" ng-submit='reportCtrl.addEmail(); reportCtrl.addReport();'>
                   <div>
                   <h3 class="text-center"> STEP 1 - YOUR RENT AND ADDRESS</h3>
                     <label for="gross_rent">What is your total monthly rent?</label>
-                    <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent'  required="required">
+                    <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent' ng-change='reportCtrl.newEmail.gross_rent=reportCtrl.newReport.gross_rent' required="required">
                        <p id="please"> Only tell us the numbers don’t use any symbols (example: type 7000 instead of $7,000.00) </p>
                        <br>
                        <hr>
@@ -116,7 +117,7 @@
 
                   <div>
                      <label for="address">Where is your building located?</label>
-                     <input size="50" vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address'  required="required">
+                     <input size="50" vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address' ng-change='reportCtrl.newEmail.address=reportCtrl.newReport.address' required="required">
                    </div>
 
                    <div>
@@ -139,10 +140,10 @@
                      <hr>
                   </div>
 
-                  <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport()'>
+                  <form name="secondForm" class="add-report" ng-submit='reportCtrl.addEmail(); reportCtrl.addReport();'>
                     <div>
                       <label for="email">Want a exact list price? Give us your email:</label>
-                      <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  required="required">
+                      <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  ng-change='reportCtrl.newEmail.email=reportCtrl.newReport.email' required="required">
                     </div>
                   <div>
                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;" style="border:1px solid black;"> See exact list price </button>
@@ -151,7 +152,8 @@
           </div>
         </div>
 
-        <!-- AGENT SELECTION PAGE -->
+
+        <!-- PHONE NUMBER INPUT PAGE -->
         <div class="container" ng-show="showMe==2">
             <h3 class="text-center estimateLabel text-color">STEP 3 - SUGGESTED LIST PRICE </h3>
             <br>
@@ -181,7 +183,7 @@
                 <br><br>
             </div>
 
-        <!-- PHONE NUMBER INPUT & TEXT PAGE -->
+        <!-- OFFER SUMMARY PAGE -->
           <div class="container" ng-show="showMe==3">
             <h3 class="text-center estimateLabel" id="title">STEP 4 - INSTANT CASH OFFER</h3>
               <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;" id="cash">
@@ -237,13 +239,14 @@
                   <div id="disc"> Disclaimer: This cash offer is not legally binding and is only for apartment / multifamily buildings in Silver Lake and Echo Park (90026) </div>
                 </div>
 
-            </div>
+
 
           </footer>
         </div>
 
         </div>
 
+    </div>
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->

@@ -7,15 +7,27 @@ ReportController.$inject = ['$http', '$filter'];
 function ReportController($http, $filter) {
   var self = this;
   self.newReport={};
+  self.newEmail={};
   self.addReport= addReport;
+  self.addEmail=addEmail;
   self.currentDate = new Date();
   $filter('shortNumber');
+
+
 
   //post report method need to store _id from response
   function addReport(){
    $http
-     .post('https://frozen-gorge-77961.herokuapp.com/reports', self.newReport)
+     .post('http://localhost:3000/reports', self.newReport)
      .success(function(response){
+   });
+  }
+
+  function addEmail(){
+   $http
+     .post('http://localhost:3000/emails', self.newEmail)
+     .success(function(response){
+       console.log(response);
    });
   }
 
