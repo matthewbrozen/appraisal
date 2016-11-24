@@ -105,19 +105,19 @@
      <!-- ADDRESS AND RENT INPUT PAGE -->
      <div class="row">
        <div class="container" ng-hide="showMe=showMe">
-               <form name="myForm" class="add-report" ng-submit='reportCtrl.addEmail(); reportCtrl.addReport();'>
+               <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport();'>
                   <div>
-                  <h3 class="text-center"> STEP 1 - YOUR RENT AND ADDRESS</h3>
-                    <label for="gross_rent">What is your total monthly rent?</label>
-                    <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent' ng-change='reportCtrl.newEmail.gross_rent=reportCtrl.newReport.gross_rent' required="required">
+                  <h3 class="text-center"> <b class="darkest">STEP 1 - YOUR RENT AND ADDRESS</b></h3>
+                    <label class="nonbold" for="gross_rent">What is your total monthly rent?</label>
+                    <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent' required="required">
                        <p id="please"> Only tell us the numbers don’t use any symbols (example: type 7000 instead of $7,000.00) </p>
                        <br>
                        <hr>
                   </div>
 
                   <div>
-                     <label for="address">Where is your building located?</label>
-                     <input size="50" vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address' ng-change='reportCtrl.newEmail.address=reportCtrl.newReport.address' required="required">
+                     <label class="nonbold" for="address">Where is your building located?</label>
+                     <input size="50" vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address' required="required">
                    </div>
 
                    <div>
@@ -132,7 +132,7 @@
         <div class="row" ng-show="showMe==1">
           <div class="row">
                  <div class="col-xs-12 col-md-12">
-                   <h3 class="text-center">STEP 2 - LIST PRICE RANGE</h3>
+                   <h3 class="text-center"><b class="darkest">STEP 2 - LIST PRICE RANGE</b></h3>
                      <h3 class="text-center estimateLabel" ng-model="vm.newProperty.estimation" style="font-weight:bold; font-size:75px">
                       ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.95 | shortNumber}} - ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*1.05| shortNumber}}
                     </h3>
@@ -140,10 +140,10 @@
                      <hr>
                   </div>
 
-                  <form name="secondForm" class="add-report" ng-submit='reportCtrl.addEmail(); reportCtrl.addReport();'>
+                  <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport();'>
                     <div>
-                      <label for="email">Want a exact list price? Give us your email:</label>
-                      <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email'  ng-change='reportCtrl.newEmail.email=reportCtrl.newReport.email' required="required">
+                      <label class="nonbold" for="email">Want a exact list price? Give us your email:</label>
+                      <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email' required="required">
                     </div>
                   <div>
                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;" style="border:1px solid black;"> See exact list price </button>
@@ -155,27 +155,27 @@
 
         <!-- PHONE NUMBER INPUT PAGE -->
         <div class="container" ng-show="showMe==2">
-            <h3 class="text-center estimateLabel text-color">STEP 3 - SUGGESTED LIST PRICE </h3>
+            <h3 class="text-center estimateLabel text-color"><b class="darkest">STEP 3 - SUGGESTED LIST PRICE </b></h3>
             <br>
             <div class-"row">
               <div class="col-xs-6" style="font-weight:bold; font-size:50px; position:relative; top:100px; left:100px;">
                 ${{ ((reportCtrl.newReport.gross_rent*12)*0.65)/0.04 | shortNumber}}
               </div>
-               <div class="col-xs-6" style="font-weight:bold; font-size:12px; height:275px; width:400px; border:1px solid black; background-color:white; margin-top:20px;"><img src="david.jpeg" alt="david's picture" height="200" width="250" style="padding:10px;"></img><br> If you’re interested in selling, list your property with the top apartment broker in the area, David Bramante. Find out more by calling 213-375-3752 or visit <a href="http://www.breinvestment.com" target="_blank">www.breinvestment.com</a></div>
+               <div class="col-xs-6" style="font-weight:bold; font-size:18px; height:350px; width:400px; border:1px solid black; background-color:white; margin-top:20px;"><b class="darkest">Top Local Realator</b><a href="http://www.breinvestment.com" target="_blank"><img src="david.jpeg" alt="david's picture" height="200" width="250" style="padding:10px;"></img></a><br> If you’re interested in selling, list your property with the top apartment broker in the area, David Bramante. Find out more by calling 213-375-3752 or visit <a href="http://www.breinvestment.com" target="_blank">www.breinvestment.com</a></div>
              </div>
              <br>
 
                <form name="thirdForm" class="add-report" ng-submit='reportCtrl.addReport()'>
                   <br>
                  <div>
-                   <label for="phone" style="padding-top:80px;">Want an immediate all-cash offer? Give us your mobile number:</label>
+                   <label class="nonbold" for="phone" style="padding-top:80px;">Want an immediate all-cash offer? Give us your mobile number:</label>
                    <input type="" id="phone" pattern="^\D?(\d{10})$" placeholder="1112223333" ng-model='reportCtrl.newReport.phone'  required="required">
                    <p id="please">Only tell us the numbers, don’t use any symbols (example: type 2133753752 instead of (213)375-3752 or 213-375-3752) </p>
                  </div>
 
 
                         <div class="col-xs-12">
-                          <button id="butt" type="submit" value="Get Appraised" ng-click="showMe=3;" style="border:1px solid black;">Get instant cash offer</button>
+                          <button id="butt" type="submit" value="Get Appraised" ng-click="showMe=3;" style="border:1px solid black;" ng-disabled="thirdForm.$invalid">Get instant cash offer</button>
                         </div>
 
                     </form>
@@ -185,12 +185,12 @@
 
         <!-- OFFER SUMMARY PAGE -->
           <div class="container" ng-show="showMe==3">
-            <h3 class="text-center estimateLabel" id="title">STEP 4 - INSTANT CASH OFFER</h3>
+            <h3 class="text-center estimateLabel" id="title"><b class="darkest">STEP 4 - INSTANT CASH OFFER</b></h3>
               <h1 class="text-center estimateLabel" style="font-weight:bold; font-size:75px;" id="cash">
                 ${{ (((reportCtrl.newReport.gross_rent*12)*0.65)/0.04)*.7 | shortNumber}}
              </h1>
               <div class="pseudo-pdf box-shadow container">
-                <button type="button" class="btn btn-default" id="printer" onclick="myFunction()">Print this page</button>
+                <button type="button" class="btn btn-primary" id="printer" onclick="myFunction()">Print this page</button>
                     <script>
                     function myFunction() {
                         $('#printer').hide()
