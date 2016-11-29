@@ -106,11 +106,11 @@
      <!-- ADDRESS AND RENT INPUT PAGE -->
      <div class="row">
        <div class="container" ng-hide="showMe=showMe">
-               <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport();'>
+               <form name="myForm" class="add-report" ng-submit='reportCtrl.addReport(); reportCtrl.addEmail();'>
                   <div>
                   <h3 class="text-center"> <b class="darkest">STEP 1 - YOUR RENT AND ADDRESS</b></h3>
                     <label class="nonbold" for="gross_rent">What is your total monthly rent?</label>
-                    <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent' required="required">
+                    <input type="number" id="gross_rent" placeholder="10000" ng-model='reportCtrl.newReport.gross_rent' ng-change='reportCtrl.newEmail.gross_rent=reportCtrl.newReport.gross_rent' required="required">
                        <p id="please"> Only tell us the numbers don’t use any symbols (example: type 7000 instead of $7,000.00) </p>
                        <br>
                        <hr>
@@ -118,7 +118,7 @@
 
                   <div>
                      <label class="nonbold" for="address">Where is your building located?</label>
-                     <input size="50" vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address' required="required">
+                     <input size="50" vs-google-autocomplete vs-autocomplete-validator="vs-street-address" name="address" type="text" id="address" placeholder="1449 Lake Shore Avenue, Los Angeles, CA, 90026" ng-model='reportCtrl.newReport.address' ng-change='reportCtrl.newEmail.address=reportCtrl.newReport.address' required="required">
                    </div>
 
                    <div>
@@ -141,10 +141,10 @@
                      <hr>
                   </div>
 
-                  <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport();'>
+                  <form name="secondForm" class="add-report" ng-submit='reportCtrl.addReport(); reportCtrl.addEmail();'>
                     <div>
                       <label class="nonbold" for="email">Want a exact list price? Give us your email:</label>
-                      <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email' required="required">
+                      <input type="email" id="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" placeholder="joe@gmail.com" ng-model='reportCtrl.newReport.email' ng-change='reportCtrl.newEmail.email=reportCtrl.newReport.email' required="required">
                     </div>
                   <div>
                     <button id="butt" type="submit" value="Get Appraised" ng-disabled="secondForm.$invalid" ng-click="showMe=2;" style="border:1px solid black;"> See exact list price </button>
