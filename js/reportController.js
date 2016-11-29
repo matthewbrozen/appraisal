@@ -18,14 +18,14 @@ function ReportController($http, $filter) {
   //post report method need to store _id from response
   function addReport(){
    $http
-     .post('http://localhost:3000/reports', self.newReport)
+     .post('https://frozen-gorge-77961.herokuapp.com/reports', self.newReport)
      .success(function(response){
    });
   }
 
   function addEmail(){
    $http
-     .post('http://localhost:3000/emails', self.newEmail)
+     .post('https://frozen-gorge-77961.herokuapp.com/emails', self.newEmail)
      .success(function(response){
        console.log(response);
    });
